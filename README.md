@@ -114,9 +114,14 @@ We will encode categorical columns using the label encoder and we will scale the
 
 For constructed year we will categorize it into four categories based on the results we got from the correlation graphs. 
 >year<1990
+
 >1990<year<2000
+
 >2000<year<2006
+
 >2006<year
+
+We will tranform Popoulation feature by using the mean value grouped on region that is by target encoding.
 
 For the installer and funder we will replace the values that have less than 100 rows as "other".
 
@@ -128,9 +133,13 @@ We will experiment with a few models such as XGBoost and different Ensembled mod
 For the XGBoost classifier we will use the default parameters. 
 For the ensembled model we will try with combinations of different layers such as 
 >XGBoost classifier
+
 >AdaBoost classifier
+
 >CatBoost classifier
+
 >RandomForest classifier
+
 >MLP classifier
 
 As the final estimator logistic regression is used in the stacking classifier-that is the ensemble model.
@@ -142,20 +151,28 @@ The XGBoost model gave a score of 0.7270.
 The ensemble models performed better giving more than 0.76.
 As adding more layers did not improve the results significantly only XGBoost and CatBoost models are selected. 
 
-For the feature set a few updates also gave better results. The construction year was used as it is rather than classifying it as it improved the results. The final achieved result was 0.7877
+For the feature set a few updates also gave better results after selecting. 
+
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image13.png)
+
+This is the feature importance graph from the XGBoost model. 
+
+Partial depency graphs are drawn for some of the features as well and following are some examples.
+
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image14.png)
+
+The final achieved result was 0.7877
 
 # Final Version
 
-In the final version, the model, the parameters and the selected features were,
+In the final version, the model and the parameters were,
 
 In the ensemble model,
 >**XGBoost** n_estimators=251, max_depth=4, learning_rate=0.1, colsample_bytree=0.2,reg_lambda=1, silent=False
 >**CatBoost** learning_rate=0.1
 >**LogisticRegression** penalty=l2
 
-The selected feature set was,
->amount_tsh, gps_height, longitude, latitude, num_private, basin, region, population, public_meeting, scheme_management, permit, construction_year, extraction_type_class, management_group, payment_type, quality_group, quantity_group, source_class, waterpoint_type
 
 The final maximum score was 0.7877.
 
-![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image12.PNG)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image12.png)
