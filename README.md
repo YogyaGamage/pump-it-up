@@ -46,48 +46,49 @@ First we will explore each of the attributes in the dataset and figure out  the 
 
 In this section we will visualize correlations with the target variable and other attributes and decide what are the best features. 
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image0.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image0.jpg?raw=true)
 
 We can see that there is a difference in communal standpipe and CSPipe multiple. So we will use waterpoint type.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image1.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image1.jpg?raw=true)
 
 Source seems to show a similar pattern in all levels.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image2.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image2.jpg?raw=true)
 
 We will use quantity group as quantity and quantity group are same.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image3.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image3.jpg?raw=true)
 
 We will use "quality group" instead of "water quality" as abandoned type data are rare.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image4.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image4.jpg?raw=true)
 
 We will use payment type.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image5.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image5.jpg?raw=true)
 
 We will use management group as the distribution does not show much difference when grouped or not.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image6.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image6.jpg?raw=true)
 
 We will use extraction type class, because except for afridev other subclasses did not show significant difference with the parent class distribution.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/imag7.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image7.jpg?raw=true)
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/imag8.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image8.jpg?raw=true)
 
 We can see that permit and public meeting has some relationship with the pump status.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image9.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image9.jpg?raw=true)
 
 Region seems to be the best attribute to use among the other location based attributes.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image10.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image10.jpg?raw=true)
 
 More non functional and need repair pipes appear to be among the older pipes.
- ![alt text](https://github.com/YogyaGamage/Pump/blob/main/image11.jpg?raw=true)
+
+ ![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image11.jpg?raw=true)
 
 The GPS coordinates also show a good correlation to the target variable.
 
@@ -107,15 +108,15 @@ The following are the columns with missing values.
 
 We will impute public_meeting, permit and scheme_management with the most popular value. At the initial step we will imput funder and installer as "none".  We are not going to use the scheme_name and subvillage columns for reasons mentioned earlier, so we will not impute them.
 
-# Transorming Data
+# Transforming Data
 
 We will encode categorical columns using the label encoder and we will scale the numerical columns using min max scalar.
 
 For constructed year we will categorize it into four categories based on the results we got from the correlation graphs. 
 >year<1990
-1990<year<2000
-2000<year<2006
-2006<year
+>1990<year<2000
+>2000<year<2006
+>2006<year
 
 For the installer and funder we will replace the values that have less than 100 rows as "other".
 
@@ -127,10 +128,10 @@ We will experiment with a few models such as XGBoost and different Ensembled mod
 For the XGBoost classifier we will use the default parameters. 
 For the ensembled model we will try with combinations of different layers such as 
 >XGBoost classifier
-AdaBoost classifier
-CatBoost classifier
-RandomForest classifier
-MLP classifier
+>AdaBoost classifier
+>CatBoost classifier
+>RandomForest classifier
+>MLP classifier
 
 As the final estimator logistic regression is used in the stacking classifier-that is the ensemble model.
 
@@ -157,4 +158,4 @@ The selected feature set was,
 
 The final maximum score was 0.7877.
 
-![alt text](https://github.com/YogyaGamage/Pump/blob/main/image12.jpg?raw=true)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image12.jpg?raw=true)
