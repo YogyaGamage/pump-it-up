@@ -158,4 +158,4 @@ The selected feature set was,
 
 The final maximum score was 0.7877.
 
-![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image12.png)
+![alt text](https://github.com/YogyaGamage/pump-it-up/blob/main/images/image12.PNG)
